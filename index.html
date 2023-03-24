@@ -1,0 +1,213 @@
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Ramadan  Checklist</title>
+  
+  <style>
+      
+    /* Styling for body */
+    body {
+      background-image: url('https://cdn.dribbble.com/users/1934630/screenshots/6442930/ramadan.gif');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-position: center center;
+      font-family: Arial, sans-serif;
+    }
+    
+    
+
+      h1 {
+        text-align: up top left;
+        font-size: 2em;
+        margin-top: 1em;
+        color: ;
+        text-shadow: 2px 2px ;
+        animation: blink 3s ease infinite alternate;
+      }
+
+      @keyframes blink {
+        0% {
+          font-size: 2em;
+          text-shadow: 1px 1px #ffff00 ;
+        }
+        100% {
+          font-size: 4em;
+          text-shadow: 4px 4px #ff0000 ;
+        }
+      }
+
+     
+ 
+   
+
+    
+    /* Styling for unordered list */
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      margin-top: 3em;
+    }
+    
+    /* Styling for list items */
+    li {
+      margin: 10px;
+      font-size: 1.5em;
+      color: #fff;
+      text-shadow: 2px 2px #000;
+      position: relative;
+      padding-left: 2em;
+    }
+    
+    /* Styling for checkbox */
+    input[type="checkbox"] {
+      appearance: none;
+      background-color: #fff;
+      border-radius: 50%;
+      border: 2px solid #000;
+      height: 1.5em;
+      width: 1.5em;
+      cursor: pointer;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: translateX(-50%);
+    }
+    
+    /* Styling for checked checkbox */
+    input[type="checkbox"]:checked {
+      background-color: #4CAF50;
+      border-color: #4CAF50;
+    }
+    
+    /* Styling for progress bar container */
+    .progress-bar {
+      background-color: #eee;
+      height: 20px;
+      width: 100%;
+      margin-top: 20px;
+      position: relative;
+    }
+    
+    /* Styling for progress bar */
+    .progress {
+      background-color: #4CAF50;
+      height: 100%;
+      width: 0%;
+      transition: width 0.9s ease-in-out;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    
+    /* Styling for progress bar value */
+    .progress:after {
+      content: attr(data-value) "%";
+      position: absolute;
+      top: 0;
+      right: -30px;
+      font-size: 14px;
+      color: #000;
+    }
+    
+  </style>
+  
+</head>
+
+<body>
+  <h1>CHECKLIST</h1>
+  
+  <ul>
+      
+      
+      
+    <li>
+      <input type="checkbox" onchange="updateProgress()"> 
+      <span>Sehri</span>
+    </li>
+    
+    
+    <li>
+      <input type="checkbox" onchange="updateProgress()"> 
+      <span>Fajr Salah</span>
+    </li>
+    
+    <li>
+      <input type="checkbox" onchange="updateProgress()"> 
+      <span>Ramadan Planner </span>
+    </li>
+    
+    
+    <li>
+      <input type="checkbox" onchange="updateProgress()"> 
+      <span>10 Islamic doya </span>
+    </li>
+    
+    <li>
+      <input type="checkbox" onchange="updateProgress()"> 
+      <span>2 Quran learning class </span>
+    </li>
+    
+    
+    <li>
+      <input type="checkbox" onchange="updateProgress()"> 
+      <span>Johor salat</span>
+    </li>
+    
+    <li>
+      <input type="checkbox" onchange="updateProgress()"> 
+      <span>Asor salat</span>
+    </li>
+    
+    <li>
+      <input type="checkbox" onchange="updateProgress()"> 
+      <span>Magrib salat</span>
+    </li>
+    
+    <li>
+      <input type="checkbox" onchange="updateProgress()"> 
+      <span>Esa Salat with tarabi</span>
+    </li>
+    
+    <li>
+      <input type="checkbox" onchange="updateProgress()"> 
+      <span> study from 10 to 12 am </span>
+    </li>
+    
+    <li>
+      <input type="checkbox" onchange="updateProgress()"> 
+      <span>Reading Quran 5 page atleast</span>
+    </li>
+    
+    <li>
+      <input type="checkbox" onchange="updateProgress()"> 
+      <span>Task loading ▫️▫️▫️▫️▫️</span>
+  
+    
+  </ul>
+  
+  <div class="progress-bar">
+    <div class="progress" data-value="0"></div>
+  </div>
+  
+   <script>
+    function updateProgress() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      const checkedCount = Array.from(checkboxes).filter(el => el.checked).length;
+      const progressBar = document.querySelector('.progress');
+      const progressValue = Math.floor(checkedCount / checkboxes.length * 100);
+      progressBar.setAttribute('data-value', progressValue);
+      progressBar.style.width = `${progressValue}%`;
+      progressBar.style.backgroundColor = `hsl(${progressValue * 1.2}, 70%, 50%)`;
+      progressBar.animate([
+        { backgroundColor: `hsl(${(progressValue - 10) * 1.2}, 70%, 50%)` },
+        { backgroundColor: `hsl(${progressValue * 1.2}, 70%, 50%)` }
+      ], {
+        duration: 500,
+        easing: 'ease-in-out'
+      });
+    }
+  </script>
+</body>
+</html>
